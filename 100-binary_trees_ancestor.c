@@ -7,7 +7,7 @@
  * @second: is a pointer to the second node
  * Return: If no common ancestor was found, funcion returns NULL
  */
-binary_tree_t *binary_trees_ancestor(const binary_tree_t *first, 
+binary_tree_t *binary_trees_ancestor(const binary_tree_t *first,
 		const binary_tree_t *second)
 {
 	size_t depthONE, depthTWO;
@@ -37,5 +37,28 @@ binary_tree_t *binary_trees_ancestor(const binary_tree_t *first,
 		second = second->parent;
 	}
 	return (NULL);
+}
+
+/**
+ * binary_tree_depth - a function that measures the depth of a node
+ *	in a binary tree
+ * @tree: is a pointer to the node to measure the depth
+ *
+ * Return: If tree is NULL, your function must return 0
+ */
+size_t binary_tree_depth(const binary_tree_t *tree)
+{
+	size_t node_depth = 0;
+
+	if (tree == NULL)
+		return (0);
+
+	while (tree->parent)
+	{
+		node_depth++;
+		tree = tree->parent;
+	}
+
+	return (node_depth);
 }
 
